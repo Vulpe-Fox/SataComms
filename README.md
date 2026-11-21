@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-- Node.js 20.12 or higher
+- Node.js 20.19 or higher
 - npm
 
 Packages (installed by `npm install`): react, react-dom, react-router-dom, express, multer, nodemailer, sharp, archiver, adm-zip, vite, @vitejs/plugin-react, concurrently.

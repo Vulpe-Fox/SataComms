@@ -1,0 +1,11 @@
+#!/bin/sh
+# This hook stops a commit that contains .env, data/ or uploads/.
+# To use it, type: git config core.hooksPath .githooks
+
+bad=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^(\.env(\..*)?|data/.*|uploads/.*)$' | grep -v '^\.env\.example$')
+if [ -n "$bad" ]; then
+  echo "The commit stopped. These files must not go in git:"
+  echo "$bad" | sed 's/^/  /'
+  echo "To remove them from the commit, type: git restore --staged <file>"
+  exit 1
+fi
