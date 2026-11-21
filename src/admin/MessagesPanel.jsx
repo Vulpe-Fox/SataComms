@@ -79,7 +79,7 @@ export default function MessagesPanel() {
                     </tr>
                   ))}
                   <tr className="total"><td>Total</td><td>{m.quote.totalText}</td></tr>
-                  {m.quote.depositText ? <tr><td>Deposit</td><td>{m.quote.depositText}</td></tr> : null}
+                  {m.quote.depositText ? <tr><td>{m.quote.depositLabel || 'Deposit'}{m.quote.depositPercent > 0 ? ` (${m.quote.depositPercent}%)` : ''}</td><td>{m.quote.depositText}</td></tr> : null}
                 </tbody>
               </table>
             </div>

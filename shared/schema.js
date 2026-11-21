@@ -166,14 +166,15 @@ export const sectionTypes = {
       { key: 'totalLabel', label: 'Total label', type: 'text' },
       { key: 'depositPercent', label: 'Deposit (percent of total, 0 hides it)', group: 'choices', type: 'number', min: 0, max: 100 },
       { key: 'depositMin', label: 'Minimum deposit amount (optional)', group: 'choices', type: 'number', min: 0, step: 0.01 },
-      { key: 'depositLabel', label: 'Deposit label', type: 'text' },
+      { key: 'depositLabel', label: 'Deposit label', group: 'choices', type: 'text' },
+      { key: 'depositNote', label: 'Text about the deposit (shows under the deposit on the quote and in the contact form)', group: 'choices', type: 'textarea' },
       { key: 'note', label: 'Note under total', type: 'textarea' },
       { key: 'buttonText', label: 'Request button text', type: 'text' },
       { key: 'buttonTarget', label: 'Request button goes to page', type: 'page' },
     ],
     create: () => ({
       title: '', body: '', basePrice: 0, minPrice: 0, groups: [],
-      summaryTitle: '', baseLabel: '', totalLabel: '', depositPercent: 0, depositMin: '', depositLabel: 'Deposit', note: '', buttonText: '', buttonTarget: '',
+      summaryTitle: '', baseLabel: '', totalLabel: '', depositPercent: 0, depositMin: '', depositLabel: 'Deposit', depositNote: '', note: '', buttonText: '', buttonTarget: '',
     }),
   },
 

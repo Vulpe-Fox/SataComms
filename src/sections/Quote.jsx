@@ -141,8 +141,11 @@ export default function Quote({ section, data, layout, settings, goTo }) {
       lines: result.lines.map((l) => ({ ...l, amountText: formatPrice(l.amount, settings) })),
       deposit: result.deposit,
       depositText: result.deposit ? formatPrice(result.deposit, settings) : '',
+      depositPercent: result.depositPercent,
+      depositLabel: data.depositLabel || 'Deposit',
+      depositNote: data.depositNote || '',
     });
-  }, [result, section.id, settings, setQuote]);
+  }, [result, section.id, settings, setQuote, data.depositLabel, data.depositNote]);
 
   return (
     <div className="container">
@@ -177,6 +180,7 @@ export default function Quote({ section, data, layout, settings, goTo }) {
               <strong>{formatPrice(result.deposit, settings)}</strong>
             </div>
           )}
+          {result.deposit > 0 && <Prose text={data.depositNote} className="prose small muted quote-deposit-note" />}
           <Prose text={data.note} className="prose small muted" />
           {data.buttonText && !(settings.commissionsOpen === false && settings.closedLocksForm !== false) && (
             <button type="button" className="btn block" onClick={() => goTo(data.buttonTarget)}>{data.buttonText}</button>

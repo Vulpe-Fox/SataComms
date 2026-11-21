@@ -6,6 +6,7 @@ import { api } from '../api.js';
 const MAX_FILES = 5;
 const MAX_SIZE = 10 * 1024 * 1024;
 const NONE = [];
+const depositTitle = (q) => `${q.depositLabel || 'Deposit'}${q.depositPercent > 0 ? ` (${q.depositPercent}%)` : ''}`;
 
 // Image picker with previews. Files are kept in the parent form state.
 function FileField({ field, files, onChange, room }) {
@@ -165,9 +166,18 @@ export default function Contact({ section, data, layout, settings = {}, pages = 
               name="website" value={trap} onChange={(e) => setTrap(e.target.value)}
             />
             {showQuote && (
-              <div className="quote-attach">
-                {data.quoteLabel && <div className="muted small">{data.quoteLabel}</div>}
-                <strong>{quote ? quote.totalText : data.noQuoteText || 'No quote'}</strong>
+              <div className="quote-attach-box">
+                <div className="quote-attach">
+                  {data.quoteLabel && <div className="muted small">{data.quoteLabel}</div>}
+                  <strong>{quote ? quote.totalText : data.noQuoteText || 'No quote'}</strong>
+                </div>
+                {quote?.depositText && (
+                  <div className="quote-attach-deposit">
+                    <span>{depositTitle(quote)}</span>
+                    <strong>{quote.depositText}</strong>
+                  </div>
+                )}
+                {quote?.depositText && <Prose text={quote.depositNote} className="prose small muted" />}
               </div>
             )}
             {error && <div className="error">{error}</div>}

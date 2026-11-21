@@ -29,7 +29,7 @@ function emailText(m) {
     if (m.quote.base) lines.push(`  Base: ${m.quote.baseText}`);
     for (const l of m.quote.lines || []) lines.push(`  ${[l.groupLabel, l.label].filter(Boolean).join(': ') || 'Option'}${l.qty > 1 ? ` x${l.qty}` : ''}: ${l.amountText}`);
     lines.push(`  Total: ${m.quote.totalText}`);
-    if (m.quote.depositText) lines.push(`  Deposit: ${m.quote.depositText}`);
+    if (m.quote.depositText) lines.push(`  ${m.quote.depositLabel || 'Deposit'}${m.quote.depositPercent > 0 ? ` (${m.quote.depositPercent}%)` : ''}: ${m.quote.depositText}`);
   }
   lines.push('', `Open the admin panel: ${baseUrl()}/admin/messages`);
   return lines.join('\n');

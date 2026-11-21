@@ -42,7 +42,8 @@
 .a-preview .nav-sticky { position: sticky; }
 
 .a-box { background: var(--a-panel); border: 1px solid var(--a-border); border-radius: 10px; padding: 1rem; margin: 0 0 1rem; min-width: 0; }
-.a-box legend { font-weight: 600; padding: 0 0.4rem; }
+.a-box legend { float: left; width: 100%; font-weight: 600; font-size: 1.05rem; padding: 0; margin: 0 0 0.6rem; }
+.a-box legend + * { clear: both; }
 .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
 .panel-head h2 { margin: 0; }
 
@@ -50,6 +51,7 @@
 .a-row { display: grid; gap: 0.3rem; }
 .a-label { font-weight: 600; font-size: 0.85rem; color: var(--a-text); }
 .a-hint { color: var(--a-muted); font-size: 0.85rem; }
+.a-box > legend + .a-hint { margin-top: 0; }
 .a-error { color: var(--a-danger); }
 .a-input {
   width: 100%; padding: 0.5rem 0.6rem; border: 1px solid var(--a-border); border-radius: 6px;
